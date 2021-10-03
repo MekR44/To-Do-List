@@ -1,0 +1,14 @@
+.container {
+    margin:auto;
+    margin-top:20px;
+
+}
+
+#ul1 > li {
+    line-height:30px;
+}
+
+.delete {
+    height: 20px;
+    font-size: xx-small;
+}
