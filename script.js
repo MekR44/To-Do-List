@@ -1,13 +1,12 @@
 
-//Delete button functionality not yet scripted
+//Delete button functionality not yet fully functional
 
 //************************************************************
 //***********************FUNCTIONS****************************
 //************************************************************
 
 // Creates Delete Button
-
-function createDeleteButton(){
+function createDeleteButton() {
     let delButton = document.createElement("button");
     delButton.setAttribute("class", "delete btn btn-secondary btn-sm");
     delButton.innerHTML = "Delete";
@@ -15,11 +14,10 @@ function createDeleteButton(){
 }
 
 
-
 // Puts text and delete button into an "li" tag
-function createListItem (text1){
+function createListItem(text1) {
     let li1 = document.createElement("li");
-    let text = document.createTextNode (text1 + ' ');
+    let text = document.createTextNode(text1 + ' ');
     li1.appendChild(text);
     li1.appendChild(createDeleteButton());
     return li1;
@@ -40,7 +38,7 @@ function addToListMouse() {
     let text1 = document.getElementById("text1").value;
     if (text1.length > 0) {
         appendToList(text1);
-    
+
     }
 }
 
@@ -51,11 +49,28 @@ function addToListKey(event) {
         appendToList(text1);
     }
 }
+
+//Deletes item
+function removeItem(item) {
+    item.parentElement.remove();
+}
+
 //************************************************************
 //***********************END FUNCTIONS************************
 //************************************************************
 
-//Creates event listeners for user click of "submit" button or 
-//pressing "Enter"
+//Creates event listeners for user click of "submit" button or pressing "Enter"
 document.getElementById("button1").addEventListener("click", addToListMouse);
 document.getElementById("text1").addEventListener("keypress", addToListKey);
+
+
+//Creates event listener for delete buttons 
+//and removes any clicked button's parent li tag
+let deleteButtons = document.getElementsByClassName("delete");
+for (let i = 0; i < deleteButtons.length; i++) {
+
+    deleteButtons[i].addEventListener("click", function () {
+        removeItem(deleteButtons[i]);
+    });
+
+}
