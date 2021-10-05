@@ -1,15 +1,16 @@
 
-//Delete button functionality not yet fully functional
-
 //************************************************************
 //***********************FUNCTIONS****************************
 //************************************************************
 
-// Creates Delete Button
+// Creates Delete Button and adds an event listener to it
 function createDeleteButton() {
     let delButton = document.createElement("button");
     delButton.setAttribute("class", "delete btn btn-secondary btn-sm");
     delButton.innerHTML = "Delete";
+    delButton.addEventListener("click", function () {
+        removeItem(delButton);
+    });
     return delButton;
 }
 
@@ -64,7 +65,7 @@ document.getElementById("button1").addEventListener("click", addToListMouse);
 document.getElementById("text1").addEventListener("keypress", addToListKey);
 
 
-//Creates event listener for delete buttons 
+//Creates event listener for initial delete buttons 
 //and removes any clicked button's parent li tag
 let deleteButtons = document.getElementsByClassName("delete");
 for (let i = 0; i < deleteButtons.length; i++) {
